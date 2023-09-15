@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  client_id       Int    @id
+  user_id         Int
+  plan_type       String
+  credits         Float
+  current_consume Float
+  allow_consume   Float
+  User            User   @relation(fields: [user_id], references: [user_id])
+
+  @@map("client")
+}
+
+model Message {
+  message_id  Int      @id
+  user_id     Int
+  text        String
+  sent_date   DateTime
+  is_whatsapp String
+  User        User     @relation(fields: [user_id], references: [user_id])
+
+  @@map("message")
+}
+
+model User {
+  user_id      Int       @id
+  cpf          String
+  name         String
+  email        String
+  phone        String
+  createdat    DateTime
+  company_name String
+  company_cnpj String
+  Client       Client[]
+  Message      Message[]
+
+  @@map("user")
+}
