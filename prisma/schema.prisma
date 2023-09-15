@@ -12,7 +12,7 @@ datasource db {
 
 model Client {
   client_id       Int    @id @default(autoincrement())
-  user_id         Int
+  user_id         Int    @unique
   plan_type       String
   credits         Float
   current_consume Float
@@ -24,7 +24,7 @@ model Client {
 
 model Message {
   message_id  Int      @id @default(autoincrement())
-  user_id     Int
+  user_id     Int      @unique
   text        String
   sent_date   DateTime @default(now())
   is_whatsapp String
@@ -35,7 +35,7 @@ model Message {
 
 model User {
   user_id      Int       @id @default(autoincrement())
-  cpf          String
+  cpf          String    @unique
   name         String
   email        String
   phone        String
