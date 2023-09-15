@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Client {
-  client_id       Int    @id
+  client_id       Int    @id @default(autoincrement())
   user_id         Int
   plan_type       String
   credits         Float
@@ -23,10 +23,10 @@ model Client {
 }
 
 model Message {
-  message_id  Int      @id
+  message_id  Int      @id @default(autoincrement())
   user_id     Int
   text        String
-  sent_date   DateTime
+  sent_date   DateTime @default(now())
   is_whatsapp String
   User        User     @relation(fields: [user_id], references: [user_id])
 
@@ -34,12 +34,12 @@ model Message {
 }
 
 model User {
-  user_id      Int       @id
+  user_id      Int       @id @default(autoincrement())
   cpf          String
   name         String
   email        String
   phone        String
-  createdat    DateTime
+  createdat    DateTime  @default(now())
   company_name String
   company_cnpj String
   Client       Client[]
