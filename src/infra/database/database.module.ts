@@ -23,5 +23,6 @@ import { PrismaMessageRepository } from './prisma/repositories/prisma-message.re
       useClass: PrismaMessageRepository,
     },
   ],
+  exports: [UserRepository, ClientRepository, MessageRepository],
 })
 export class DatabaseModule {}
