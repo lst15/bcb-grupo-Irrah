@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { MessageModel } from 'src/domain/models/Message.model';
+import { MessageModel } from 'src/domain/models/message.model';
 import { MessageRepository } from 'src/domain/repositories/message.repository';
 import { PrismaService } from '../PrismaService';
 

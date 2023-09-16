@@ -1,6 +1,7 @@
 import { ClientModel } from '../models/client.model';
 import { BaseRepository } from './base.repository';
-
+import { Injectable } from '@nestjs/common';
+@Injectable()
 export abstract class ClientRepository extends BaseRepository<ClientModel> {
   abstract changeLimit(user_id: number, limit: number): Promise<any> | object;
   abstract changeplan(
