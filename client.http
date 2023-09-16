@@ -1,0 +1,67 @@
+@baseUrl = http://localhost:3000
+@baseId = {{create_user.response.body.user.user_id}}
+
+# @name create_user
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "cpf": "04157438221",
+  "name": "Juvenal",
+  "email": "Jave1algarci1a@gmail.com",
+  "phone": "+5513946271364",
+  "company_name": "Supermercado",
+  "company_cnpj": "511131442/0000"
+}
+
+###
+
+# @name send_message
+POST {{baseUrl}}/message/send
+Content-Type: application/json
+
+{
+    "user_id":52,
+    "text":"Compre meu curso",
+    "is_whatsapp":true
+}
+
+###
+
+# @name add_credits
+PUT {{baseUrl}}/clients/add_credits
+Content-Type: application/json
+
+{
+  "user_id":52,
+  "credits":0.5
+}
+
+###
+
+# @name get_client
+GET {{baseUrl}}/clients/52
+Content-Type: application/json
+
+###
+
+# @name change_plan
+PUT {{baseUrl}}/clients/plan
+Content-Type: application/json
+
+{
+  "user_id":52,
+  "plan_type":"pos-pago"
+}
+
+###
+
+# @name change_limit
+PUT {{baseUrl}}/clients/limit
+Content-Type: application/json
+
+{
+  "user_id":52,
+  "limit":3
+}
+

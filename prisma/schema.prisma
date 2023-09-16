@@ -23,12 +23,11 @@ model Client {
 }
 
 model Message {
-  message_id  Int      @id @default(autoincrement())
-  user_id     Int      @unique
+  message_id  Int     @id @default(autoincrement())
+  user_id     Int
   text        String
-  sent_date   DateTime @default(now())
-  is_whatsapp String
-  User        User     @relation(fields: [user_id], references: [user_id])
+  is_whatsapp Boolean
+  User        User    @relation(fields: [user_id], references: [user_id])
 
   @@map("message")
 }
@@ -37,11 +36,10 @@ model User {
   user_id      Int       @id @default(autoincrement())
   cpf          String    @unique
   name         String
-  email        String
-  phone        String
-  createdat    DateTime  @default(now())
+  email        String    @unique
+  phone        String    @unique
   company_name String
-  company_cnpj String
+  company_cnpj String    @unique
   Client       Client[]
   Message      Message[]
 

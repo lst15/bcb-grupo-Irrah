@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from './prisma/PrismaService';
-import { UserRepository } from 'src/domain/repositories/user.repository';
-import { PrismaUserRepository } from './prisma/repositories/prisma-user.repository';
 import { ClientRepository } from 'src/domain/repositories/client.repository';
-import { PrismaClientRepository } from './prisma/repositories/prisma-client.repository';
 import { MessageRepository } from 'src/domain/repositories/message.repository';
-import { PrismaMessageRepository } from './prisma/repositories/prisma-message.repository';
+import { UserRepository } from 'src/domain/repositories/user.repository';
+import { PrismaService } from './PrismaService';
+import { PrismaClientRepository } from './repositories/prisma-client.repository';
+import { PrismaMessageRepository } from './repositories/prisma-message.repository';
+import { PrismaUserRepository } from './repositories/prisma-user.repository';
 
 @Module({
   providers: [
@@ -25,4 +25,4 @@ import { PrismaMessageRepository } from './prisma/repositories/prisma-message.re
   ],
   exports: [UserRepository, ClientRepository, MessageRepository],
 })
-export class DatabaseModule {}
+export class PrismaModuleDatabase {}

@@ -1,19 +1,35 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '../database/database.module';
 import { CreateUserController } from './controllers/user/create-user.controller';
-import { CreateClientController } from './controllers/client/create-client.controller';
-import { CreateMessageController } from './controllers/message/create-message.controller';
 import { CreateUserUseCase } from 'src/domain/usecases/user/create-user.usecase';
-import { CreateClientUseCase } from 'src/domain/usecases/client/create-client.usecase';
-import { CreateMessageUseCase } from 'src/domain/usecases/message/create-message.usecase';
+import { IncludeCreditsController } from './controllers/client/include-credits.controller';
+import { IncludeCreditsUseCase } from 'src/domain/usecases/client/include-credits.usecase';
+import { GetClientController } from './controllers/client/get-client.controller';
+import { GetClientUseCase } from 'src/domain/usecases/client/get-client.usecase';
+import { ChangeplanController } from './controllers/client/change-plan.controller';
+import { ChangeLimitUseCase } from 'src/domain/usecases/client/change-limit.usecase';
+import { ChangeLimitController } from './controllers/client/change-limit.controller';
+import { ChangePlanUseCase } from 'src/domain/usecases/client/change-plain.usecase';
+import { SendMessageController } from './controllers/message/send-message.controller';
+import { SendMessageUseCase } from 'src/domain/usecases/message/send-message.usecase';
+import { PrismaModuleDatabase } from '../database/prisma/prisma.module';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [PrismaModuleDatabase],
   controllers: [
     CreateUserController,
-    CreateClientController,
-    CreateMessageController,
+    IncludeCreditsController,
+    GetClientController,
+    ChangeplanController,
+    ChangeLimitController,
+    SendMessageController,
   ],
-  providers: [CreateUserUseCase, CreateMessageUseCase, CreateClientUseCase],
+  providers: [
+    CreateUserUseCase,
+    IncludeCreditsUseCase,
+    GetClientUseCase,
+    ChangePlanUseCase,
+    ChangeLimitUseCase,
+    SendMessageUseCase,
+  ],
 })
 export class HttpModule {}
