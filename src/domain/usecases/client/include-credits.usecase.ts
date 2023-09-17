@@ -10,7 +10,10 @@ interface IncludeCreditsUseCaseRequest {
 export class IncludeCreditsUseCase {
   constructor(private clientRepository: ClientRepository) {}
 
-  async execute({ user_id, credits }: IncludeCreditsUseCaseRequest) {
+  async execute({
+    user_id,
+    credits,
+  }: IncludeCreditsUseCaseRequest): Promise<void | object> {
     const client: any = await this.clientRepository.getClient(user_id);
 
     if (!client) {

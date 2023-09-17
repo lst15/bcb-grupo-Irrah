@@ -10,7 +10,10 @@ interface ChangeLimitUseCaseRequest {
 export class ChangeLimitUseCase {
   constructor(private clientRepository: ClientRepository) {}
 
-  async execute({ user_id, limit }: ChangeLimitUseCaseRequest) {
+  async execute({
+    user_id,
+    limit,
+  }: ChangeLimitUseCaseRequest): Promise<void | object> {
     const user = await this.clientRepository.getClient(user_id);
 
     if (!user) {

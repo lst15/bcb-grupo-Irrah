@@ -8,8 +8,8 @@ import { Client } from '@prisma/client';
 export class PrismaClientRepository implements ClientRepository {
   constructor(private prisma: PrismaService) {}
 
-  async changeCurrentConsume(user_id: number, consume: number): Promise<any> {
-    return await this.prisma.client.updateMany({
+  async changeCurrentConsume(user_id: number, consume: number): Promise<void> {
+    await this.prisma.client.updateMany({
       data: {
         current_consume: consume,
       },
@@ -19,8 +19,8 @@ export class PrismaClientRepository implements ClientRepository {
     });
   }
 
-  async changeLimit(user_id: number, limit: number) {
-    return await this.prisma.client.updateMany({
+  async changeLimit(user_id: number, limit: number): Promise<void> {
+    await this.prisma.client.updateMany({
       data: {
         allow_consume: limit,
       },
@@ -30,8 +30,8 @@ export class PrismaClientRepository implements ClientRepository {
     });
   }
 
-  async changeplan(user_id: number, plan: string) {
-    return await this.prisma.client.updateMany({
+  async changePlan(user_id: number, plan: string): Promise<void> {
+    await this.prisma.client.updateMany({
       data: {
         plan_type: plan,
       },
@@ -41,8 +41,8 @@ export class PrismaClientRepository implements ClientRepository {
     });
   }
 
-  async changeCredits(user_id: number, credits: number): Promise<any> {
-    return await this.prisma.client.updateMany({
+  async changeCredits(user_id: number, credits: number): Promise<void> {
+    await this.prisma.client.updateMany({
       data: {
         credits: credits,
       },

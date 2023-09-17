@@ -51,7 +51,7 @@ export class MemoryClientRepository extends ClientRepository {
     };
   }
 
-  changeplan(user_id: number, plan_type: string): Promise<any> | object {
+  changePlan(user_id: number, plan_type: string): Promise<any> | object {
     const user = this.database.find((user) => user.user_id === user_id);
     user.plan_type = plan_type;
 

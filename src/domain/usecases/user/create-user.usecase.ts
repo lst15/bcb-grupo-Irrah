@@ -6,10 +6,12 @@ interface CreateUserUseCaseRequest extends UserModel {}
 
 @Injectable()
 export class CreateUserUseCase {
-  constructor(private clientRepository: UserRepository) {}
+  constructor(private userRepository: UserRepository) {}
 
-  async execute(request: CreateUserUseCaseRequest) {
-    const user = await this.clientRepository.findUser(
+  async execute(
+    request: CreateUserUseCaseRequest,
+  ): Promise<object | UserModel> {
+    const user = await this.userRepository.findUser(
       request.cpf,
       request.phone,
       request.email,
@@ -23,6 +25,6 @@ export class CreateUserUseCase {
       });
     }
 
-    return await this.clientRepository.create(request);
+    return await this.userRepository.create(request);
   }
 }

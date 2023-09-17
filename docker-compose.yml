@@ -8,6 +8,11 @@ services:
       POSTGRES_DB: prismadb
     ports:
       - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U prisma -d prismadb -P prismapassword']
+      interval: 5s
+      timeout: 10s
+      retries: 5
 
   web:
     build:
