@@ -1,17 +1,5 @@
-version: '3.8'
-
+version: '3'
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - '3000:3000'
-    environment:
-      DATABASE_URL: postgresql://prisma:prismapassword@postgres:5432/prismadb
-    depends_on:
-      - postgres
-
   postgres:
     image: postgres:alpine
     environment:
@@ -19,9 +7,15 @@ services:
       POSTGRES_PASSWORD: prismapassword
       POSTGRES_DB: prismadb
     ports:
-      - '5431:5432'
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - '5432:5432'
 
-volumes:
-  postgres_data:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgres://prisma:prismapassword@postgres:5432/prismadb
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
