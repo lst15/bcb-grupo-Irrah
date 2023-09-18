@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MemoryModuleDatabase } from 'src/infra/database/memory/memory.module';
 import { SendMessageController } from './send-message.controller';
-import { SendMessageUseCase } from 'src/domain/usecases/message/send-message.usecase';
+import { SendMessageUseCase } from 'src/domain/usecases/message/SendMessageUseCase';
 import { MessageModel } from 'src/domain/models/message.model';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 

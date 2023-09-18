@@ -7,4 +7,6 @@ export class SendMessageDto {
   text: string;
   @IsNumber()
   user_id: number;
+  @IsNotEmpty()
+  phone?: string;
 }

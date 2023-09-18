@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { ClientModel } from 'src/domain/models/client.model';
 import { ClientRepository } from 'src/domain/repositories/client.repository';
 
 interface IncludeCreditsUseCaseRequest {
@@ -14,7 +15,9 @@ export class IncludeCreditsUseCase {
     user_id,
     credits,
   }: IncludeCreditsUseCaseRequest): Promise<void | object> {
-    const client: any = await this.clientRepository.getClient(user_id);
+    const client = (await this.clientRepository.getClient(
+      user_id,
+    )) as ClientModel | null;
 
     if (!client) {
       throw new NotFoundException();

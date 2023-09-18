@@ -52,7 +52,7 @@ export class PrismaClientRepository implements ClientRepository {
     });
   }
 
-  async getClient(user_id: number): Promise<Client> {
+  async getClient(user_id: number): Promise<Client> | null {
     return await this.prisma.client.findFirst({
       where: {
         User: {

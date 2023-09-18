@@ -10,11 +10,12 @@ import { ChangeLimitUseCase } from 'src/domain/usecases/client/change-limit.usec
 import { ChangeLimitController } from './controllers/client/change-limit.controller';
 import { ChangePlanUseCase } from 'src/domain/usecases/client/change-plain.usecase';
 import { SendMessageController } from './controllers/message/send-message.controller';
-import { SendMessageUseCase } from 'src/domain/usecases/message/send-message.usecase';
 import { PrismaModuleDatabase } from '../database/prisma/prisma.module';
+import { MockimplModule } from '../notification/mockimpl/Mockimpl.module';
+import { SendMessageUseCase } from 'src/domain/usecases/message/send-message.usecase';
 
 @Module({
-  imports: [PrismaModuleDatabase],
+  imports: [PrismaModuleDatabase, MockimplModule],
   controllers: [
     CreateUserController,
     IncludeCreditsController,

@@ -6,12 +6,12 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "cpf": "04157438221",
+  "cpf": "04157338221",
   "name": "Juvenal",
-  "email": "Jave1algarci1a@gmail.com",
-  "phone": "+5513946271364",
+  "email": "Jav31algarci1a@gmail.com",
+  "phone": "+5513936271364",
   "company_name": "Supermercado",
-  "company_cnpj": "511131442/0000"
+  "company_cnpj": "513131442/0000"
 }
 
 ###
@@ -21,9 +21,10 @@ POST {{baseUrl}}/message/send
 Content-Type: application/json
 
 {
-    "user_id":52,
+    "user_id":2,
     "text":"Compre meu curso",
-    "is_whatsapp":true
+    "is_whatsapp":true,
+    "phone":"14996278264"
 }
 
 ###
@@ -33,14 +34,14 @@ PUT {{baseUrl}}/clients/add_credits
 Content-Type: application/json
 
 {
-  "user_id":52,
+  "user_id":2,
   "credits":0.5
 }
 
 ###
 
 # @name get_client
-GET {{baseUrl}}/clients/52
+GET {{baseUrl}}/clients/2
 Content-Type: application/json
 
 ###
@@ -50,7 +51,7 @@ PUT {{baseUrl}}/clients/plan
 Content-Type: application/json
 
 {
-  "user_id":52,
+  "user_id":2,
   "plan_type":"pos-pago"
 }
 
@@ -61,7 +62,7 @@ PUT {{baseUrl}}/clients/limit
 Content-Type: application/json
 
 {
-  "user_id":52,
+  "user_id":2,
   "limit":3
 }
 

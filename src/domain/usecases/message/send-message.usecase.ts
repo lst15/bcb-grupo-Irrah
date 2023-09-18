@@ -6,18 +6,22 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { ClientRepository } from 'src/domain/repositories/client.repository';
+import { NotificationRepository } from 'src/domain/repositories/notification.repository';
 
-interface SendMessageUseCaseRequest extends MessageModel {}
+interface SendMessageUseCaseRequest extends MessageModel {
+  phone: string;
+}
 
 @Injectable()
 export class SendMessageUseCase {
   constructor(
     private messageRepository: MessageRepository,
     private clientRepository: ClientRepository,
+    private notificationRepository: NotificationRepository,
   ) {}
 
   async execute(request: SendMessageUseCaseRequest) {
-    const { user_id } = request;
+    const { user_id, phone, text } = request;
     const client: any = await this.clientRepository.getClient(user_id);
 
     if (!client) {
@@ -42,6 +46,7 @@ export class SendMessageUseCase {
       throw new BadRequestException('plan not exists');
     }
 
+    await this.notificationRepository.sendWhatsMessage(phone, text);
     return await this.messageRepository.create(request);
   }
 }
