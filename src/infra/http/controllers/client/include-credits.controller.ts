@@ -8,8 +8,11 @@ export class IncludeCreditsController {
 
   @Put('add_credits')
   async handle(@Body() body: IncludeCreditsDto) {
-    const { user_id, credits } = body;
-    await this.includeCreditsUseCase.execute({ user_id, credits });
+    const { user_uuid, credits } = body;
+    await this.includeCreditsUseCase.execute({
+      User_user_uuid: user_uuid,
+      credits: credits,
+    });
     return {
       success: true,
     };

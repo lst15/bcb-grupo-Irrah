@@ -3,7 +3,7 @@ import { ClientModel } from 'src/domain/models/client.model';
 import { ClientRepository } from 'src/domain/repositories/client.repository';
 
 interface IncludeCreditsUseCaseRequest {
-  user_id: number;
+  User_user_uuid: string;
   credits: number;
 }
 
@@ -12,11 +12,11 @@ export class IncludeCreditsUseCase {
   constructor(private clientRepository: ClientRepository) {}
 
   async execute({
-    user_id,
+    User_user_uuid,
     credits,
   }: IncludeCreditsUseCaseRequest): Promise<void | object> {
     const client = (await this.clientRepository.getClient(
-      user_id,
+      User_user_uuid,
     )) as ClientModel | null;
 
     if (!client) {
@@ -24,7 +24,7 @@ export class IncludeCreditsUseCase {
     }
 
     return await this.clientRepository.changeCredits(
-      user_id,
+      User_user_uuid,
       client.credits + credits,
     );
   }

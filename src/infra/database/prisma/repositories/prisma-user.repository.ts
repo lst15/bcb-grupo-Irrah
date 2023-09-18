@@ -7,25 +7,25 @@ import { PrismaService } from '../PrismaService';
 export class PrismaUserRepository implements UserRepository {
   constructor(private prisma: PrismaService) {}
   async findUser(
-    cpf?: string,
-    phone?: string,
-    email?: string,
-    cnpj?: string,
+    user_cpf?: string,
+    user_phone?: string,
+    user_email?: string,
+    user_cnpj?: string,
   ): Promise<UserModel> {
     return await this.prisma.user.findFirst({
       where: {
         OR: [
           {
-            cpf: cpf,
+            user_cpf: user_cpf,
           },
           {
-            phone: phone,
+            user_phone: user_phone,
           },
           {
-            email: email,
+            user_email: user_email,
           },
           {
-            company_cnpj: cnpj,
+            user_company_cnpj: user_cnpj,
           },
         ],
       },
@@ -35,13 +35,13 @@ export class PrismaUserRepository implements UserRepository {
   async create(entity: UserModel): Promise<any> {
     return await this.prisma.user.create({
       data: {
-        name: entity.name,
-        company_cnpj: entity.company_cnpj,
-        company_name: entity.company_name,
-        cpf: entity.cpf,
-        email: entity.email,
-        phone: entity.phone,
-        Client: {
+        user_name: entity.user_name,
+        user_company_cnpj: entity.user_company_cnpj,
+        user_company_name: entity.user_company_name,
+        user_cpf: entity.user_cpf,
+        user_email: entity.user_email,
+        user_phone: entity.user_phone,
+        client_relationship: {
           create: {
             allow_consume: 0,
             current_consume: 0,

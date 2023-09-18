@@ -12,7 +12,7 @@ export class SendMessageController {
     await this.sendMessageUseCase.execute({
       is_whatsapp: body.is_whatsapp,
       phone: body.phone,
-      user_id: body.user_id,
+      User_user_uuid: body.user_uuid,
       text: body.text,
     });
 

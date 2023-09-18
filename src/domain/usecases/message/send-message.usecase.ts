@@ -21,8 +21,8 @@ export class SendMessageUseCase {
   ) {}
 
   async execute(request: SendMessageUseCaseRequest) {
-    const { user_id, phone, text } = request;
-    const client: any = await this.clientRepository.getClient(user_id);
+    const { User_user_uuid, phone, text } = request;
+    const client: any = await this.clientRepository.getClient(User_user_uuid);
 
     if (!client) {
       throw new NotFoundException();
@@ -33,13 +33,16 @@ export class SendMessageUseCase {
         throw new BadRequestException('You reach your limit');
       }
 
-      await this.clientRepository.changeCredits(user_id, client.credits - 0.25);
+      await this.clientRepository.changeCredits(
+        User_user_uuid,
+        client.credits - 0.25,
+      );
     } else if (client.plan_type == 'pos-pago') {
       if (client.current_consume >= client.allow_consume) {
         throw new BadRequestException('You reach your limit.');
       }
       await this.clientRepository.changeCurrentConsume(
-        user_id,
+        User_user_uuid,
         client.current_consume + 0.25,
       );
     } else {

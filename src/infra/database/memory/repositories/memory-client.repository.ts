@@ -6,35 +6,35 @@ import { ClientRepository } from 'src/domain/repositories/client.repository';
 export class MemoryClientRepository extends ClientRepository {
   private database: ClientModel[] = [
     {
-      user_id: 0,
+      User_user_uuid: 'abcde-1234',
       plan_type: 'pre-pago',
       allow_consume: 0,
       credits: 0.25,
       current_consume: 0,
     },
     {
-      user_id: 1,
+      User_user_uuid: 'fghi-5678',
       plan_type: 'pre-pago',
       allow_consume: 0,
       credits: 0,
       current_consume: 0,
     },
     {
-      user_id: 2,
+      User_user_uuid: 'jklm-9012',
       plan_type: 'pos-pago',
       allow_consume: 0.25,
       credits: 0,
       current_consume: 0,
     },
     {
-      user_id: 3,
+      User_user_uuid: 'mnop-3456',
       plan_type: 'pos-pago',
       allow_consume: 0,
       credits: 4,
       current_consume: 0,
     },
     {
-      user_id: 4,
+      User_user_uuid: 'pqrs-7890',
       plan_type: 'pago',
       allow_consume: 0,
       credits: 4,
@@ -42,8 +42,10 @@ export class MemoryClientRepository extends ClientRepository {
     },
   ];
 
-  changeLimit(user_id: number, limit: number): Promise<any> | object {
-    const user = this.database.find((user) => user.user_id === user_id);
+  changeLimit(user_uuid: string, limit: number): Promise<any> | object {
+    const user = this.database.find(
+      (user) => user.User_user_uuid === user_uuid,
+    );
     user.allow_consume = limit;
 
     return {
@@ -51,8 +53,10 @@ export class MemoryClientRepository extends ClientRepository {
     };
   }
 
-  changePlan(user_id: number, plan_type: string): Promise<any> | object {
-    const user = this.database.find((user) => user.user_id === user_id);
+  changePlan(user_uuid: string, plan_type: string): Promise<any> | object {
+    const user = this.database.find(
+      (user) => user.User_user_uuid === user_uuid,
+    );
     user.plan_type = plan_type;
 
     return {
@@ -60,13 +64,17 @@ export class MemoryClientRepository extends ClientRepository {
     };
   }
 
-  getClient(user_id: number): Promise<ClientModel> | object {
-    const user = this.database.find((user) => user.user_id === user_id);
+  getClient(user_uuid: string): Promise<ClientModel> | object {
+    const user = this.database.find(
+      (user) => user.User_user_uuid === user_uuid,
+    );
     return user;
   }
 
-  changeCredits(user_id: number, credits: number): Promise<any> | object {
-    const user = this.database.find((user) => user.user_id === user_id);
+  changeCredits(user_uuid: string, credits: number): Promise<any> | object {
+    const user = this.database.find(
+      (user) => user.User_user_uuid === user_uuid,
+    );
     user.credits = credits;
 
     return {
@@ -75,10 +83,12 @@ export class MemoryClientRepository extends ClientRepository {
   }
 
   changeCurrentConsume(
-    user_id: number,
+    user_uuid: string,
     consume: number,
   ): Promise<any> | object {
-    const user = this.database.find((user) => user.user_id === user_id);
+    const user = this.database.find(
+      (user) => user.User_user_uuid === user_uuid,
+    );
     user.current_consume = consume;
 
     return {

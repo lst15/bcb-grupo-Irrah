@@ -5,9 +5,9 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export abstract class UserRepository extends BaseRepository<UserModel> {
   abstract findUser(
-    cpf?: string,
-    phone?: string,
-    email?: string,
-    cnpj?: string,
+    user_cpf?: string,
+    user_phone?: string,
+    user_email?: string,
+    user_cnpj?: string,
   ): Promise<UserModel | null> | object;
 }

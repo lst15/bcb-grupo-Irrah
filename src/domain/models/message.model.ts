@@ -1,5 +1,5 @@
 export interface MessageModel {
-  user_id: number;
+  User_user_uuid: string;
   text: string;
   is_whatsapp: boolean;
 }

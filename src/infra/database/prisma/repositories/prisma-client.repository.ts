@@ -8,55 +8,58 @@ import { Client } from '@prisma/client';
 export class PrismaClientRepository implements ClientRepository {
   constructor(private prisma: PrismaService) {}
 
-  async changeCurrentConsume(user_id: number, consume: number): Promise<void> {
+  async changeCurrentConsume(
+    user_uuid: string,
+    consume: number,
+  ): Promise<void> {
     await this.prisma.client.updateMany({
       data: {
         current_consume: consume,
       },
       where: {
-        user_id: user_id,
+        User_user_uuid: user_uuid,
       },
     });
   }
 
-  async changeLimit(user_id: number, limit: number): Promise<void> {
+  async changeLimit(user_uuid: string, limit: number): Promise<void> {
     await this.prisma.client.updateMany({
       data: {
         allow_consume: limit,
       },
       where: {
-        user_id: user_id,
+        User_user_uuid: user_uuid,
       },
     });
   }
 
-  async changePlan(user_id: number, plan: string): Promise<void> {
+  async changePlan(user_uuid: string, plan: string): Promise<void> {
     await this.prisma.client.updateMany({
       data: {
         plan_type: plan,
       },
       where: {
-        user_id: user_id,
+        User_user_uuid: user_uuid,
       },
     });
   }
 
-  async changeCredits(user_id: number, credits: number): Promise<void> {
+  async changeCredits(user_uuid: string, credits: number): Promise<void> {
     await this.prisma.client.updateMany({
       data: {
         credits: credits,
       },
       where: {
-        user_id: user_id,
+        User_user_uuid: user_uuid,
       },
     });
   }
 
-  async getClient(user_id: number): Promise<Client> | null {
+  async getClient(user_uuid: string): Promise<Client> | null {
     return await this.prisma.client.findFirst({
       where: {
         User: {
-          user_id: user_id,
+          user_uuid: user_uuid,
         },
       },
     });

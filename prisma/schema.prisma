@@ -13,36 +13,39 @@ datasource db {
 
 model Client {
   client_id       Int    @id @default(autoincrement())
-  user_id         Int    @unique
+  User_user_uuid  String @unique
   plan_type       String
   credits         Float
   current_consume Float
   allow_consume   Float
-  User            User   @relation(fields: [user_id], references: [user_id])
+
+  User User @relation(fields: [User_user_uuid], references: [user_uuid])
 
   @@map("client")
 }
 
 model Message {
-  message_id  Int     @id @default(autoincrement())
-  user_id     Int
-  text        String
-  is_whatsapp Boolean
-  User        User    @relation(fields: [user_id], references: [user_id])
+  message_id     Int     @id @default(autoincrement())
+  User_user_uuid String
+  text           String
+  is_whatsapp    Boolean
+  User           User    @relation(fields: [User_user_uuid], references: [user_uuid])
 
   @@map("message")
 }
 
 model User {
-  user_id      Int       @id @default(autoincrement())
-  cpf          String    @unique
-  name         String
-  email        String    @unique
-  phone        String    @unique
-  company_name String
-  company_cnpj String    @unique
-  Client       Client[]
-  Message      Message[]
+  user_uuid         String    @id @unique @default(uuid())
+  user_cpf          String    @unique
+  user_name         String
+  user_email        String    @unique
+  user_phone        String    @unique
+  user_company_name String
+  user_company_cnpj String    @unique
+  user_createdAt    DateTime? @default(now())
 
-  @@map("user")
+  message_relationship Message[]
+  client_relationship  Client[]
+
+  @@map(name: "user")
 }

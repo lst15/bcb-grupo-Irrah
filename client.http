@@ -6,12 +6,12 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "cpf": "04157338221",
-  "name": "Juvenal",
-  "email": "Jav31algarci1a@gmail.com",
-  "phone": "+5513936271364",
-  "company_name": "Supermercado",
-  "company_cnpj": "513131442/0000"
+  "user_cpf": "04157338221",
+  "user_name": "Juvenal",
+  "user_email": "Jav31algarci1a@gmail.com",
+  "user_phone": "+5513936271364",
+  "user_company_name": "Supermercado",
+  "user_company_cnpj": "513131442/0000"
 }
 
 ###

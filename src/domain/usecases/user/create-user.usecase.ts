@@ -12,10 +12,10 @@ export class CreateUserUseCase {
     request: CreateUserUseCaseRequest,
   ): Promise<object | UserModel> {
     const user = await this.userRepository.findUser(
-      request.cpf,
-      request.phone,
-      request.email,
-      request.company_cnpj,
+      request.user_cpf,
+      request.user_phone,
+      request.user_email,
+      request.user_company_cnpj,
     );
 
     if (user) {

@@ -10,24 +10,24 @@ import {
 export class CreateUserDto {
   @MaxLength(100)
   @IsNotEmpty()
-  name: string;
+  user_name: string;
 
   @IsNotEmpty()
   @IsEmail({})
-  email: string;
+  user_email: string;
 
   @IsPhoneNumber('BR')
-  phone: string;
+  user_phone: string;
 
   @MaxLength(100)
   @IsNotEmpty({ message: 'invalid name' })
-  company_name: string;
+  user_company_name: string;
 
   @MinLength(11)
   @MaxLength(11)
-  cpf: string;
+  user_cpf: string;
 
   @MinLength(14)
   @MaxLength(14)
-  company_cnpj: string;
+  user_company_cnpj: string;
 }

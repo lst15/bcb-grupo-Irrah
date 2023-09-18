@@ -8,7 +8,7 @@ export class MemoryMessageRepository extends MessageRepository {
     {
       is_whatsapp: true,
       text: 'Bom dia',
-      user_id: 0,
+      User_user_uuid: '',
     },
   ];
 
