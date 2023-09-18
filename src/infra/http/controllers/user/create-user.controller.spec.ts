@@ -20,12 +20,13 @@ describe('Create User', () => {
 
   it('It should be able to create an user', async () => {
     const user: UserModel = {
-      name: 'Talia Doe',
-      cpf: '8876642210110',
-      email: 'taliadoe@example.com',
-      company_name: 'ibi churrascos',
-      company_cnpj: '12058145142121/0000',
-      phone: '+551299866311',
+      user_uuid: '14905ac7-6ca4-4512-8e3f-cb599e11aa45',
+      user_name: 'Talia Doe',
+      user_cpf: '8876642210110',
+      user_email: 'taliadoe@example.com',
+      user_company_name: 'ibi churrascos',
+      user_company_cnpj: '12058145142121/0000',
+      user_phone: '+551299866311',
     };
 
     const result = await appController.handle(user);
@@ -34,12 +35,13 @@ describe('Create User', () => {
 
   it('It should not be able to create an user because already exists', async () => {
     const user: UserModel = {
-      name: 'Lucius Doe',
-      cpf: '98765432100',
-      email: 'luciusdoe@example.com',
-      company_name: 'ibi churrascos',
-      company_cnpj: '1204060812121/0000',
-      phone: '+551299866312',
+      user_uuid: '14905ac7-6ca4-4512-8e3f-cb599e11aa45',
+      user_name: 'Lucius Doe',
+      user_cpf: '98765432100',
+      user_email: 'luciusdoe@example.com',
+      user_company_name: 'ibi churrascos',
+      user_company_cnpj: '1204060812121/0000',
+      user_phone: '+551299866312',
     };
 
     await expect(async () => {

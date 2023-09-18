@@ -1,11 +1,9 @@
-import { IsBoolean, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 
 export class SendMessageDto {
-  @IsBoolean()
-  is_whatsapp: boolean;
   @IsNotEmpty()
   text: string;
-  @IsNumber()
+  @IsNotEmpty()
   user_uuid: string;
   @IsNotEmpty()
   phone?: string;

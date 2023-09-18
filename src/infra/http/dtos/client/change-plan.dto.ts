@@ -1,7 +1,7 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 
 export class ChangePlanDto {
-  @IsNumber()
+  @IsNotEmpty()
   user_uuid: string;
   @IsNotEmpty()
   plan_type: string;

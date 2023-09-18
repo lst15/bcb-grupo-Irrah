@@ -19,7 +19,7 @@ describe('Create User', () => {
 
   it('It should be able to add more credits to an user', async () => {
     const body = {
-      user_id: 0,
+      user_uuid: 'd0fa50b5-d4ec-4f36-9dae-29d4f964100f',
       credits: 10,
     };
 
@@ -28,7 +28,7 @@ describe('Create User', () => {
 
   it('It should not be able add more credits to an user because user not exists', async () => {
     const body = {
-      user_id: 100,
+      user_uuid: '8d47d713-eefb-4c46-afc4-44b6b8f415af',
       credits: 10,
     };
 

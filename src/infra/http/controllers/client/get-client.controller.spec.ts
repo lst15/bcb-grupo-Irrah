@@ -18,23 +18,15 @@ describe('Create User', () => {
   });
 
   it('It should be able to find a client', async () => {
-    const user_id = 0;
-    expect(await appController.handle(user_id)).toHaveProperty('credits');
-  });
-
-  it('It should not be able to find a client because isnt a number', async () => {
-    const user_id = '0a';
-
-    await expect(async () => {
-      await appController.handle(user_id as unknown as number);
-    }).rejects.toThrow(NotFoundException);
+    const user_uuid = 'b1c3af5f-7273-4a4a-b6d0-be9c210ac887';
+    expect(await appController.handle(user_uuid)).toHaveProperty('credits');
   });
 
   it('It should not be able to find a client because user not exists', async () => {
-    const user_id = 100;
+    const user_uuid = '8d47d713-eefb-4c46-afc4-44b6b8f415af';
 
     await expect(async () => {
-      await appController.handle(user_id as unknown as number);
+      await appController.handle(user_uuid);
     }).rejects.toThrow(NotFoundException);
   });
 });

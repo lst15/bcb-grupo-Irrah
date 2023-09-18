@@ -8,9 +8,7 @@ import {
 import { ClientRepository } from 'src/domain/repositories/client.repository';
 import { NotificationRepository } from 'src/domain/repositories/notification.repository';
 
-interface SendMessageUseCaseRequest extends MessageModel {
-  phone: string;
-}
+interface SendMessageUseCaseRequest extends MessageModel {}
 
 @Injectable()
 export class SendMessageUseCase {
@@ -21,7 +19,8 @@ export class SendMessageUseCase {
   ) {}
 
   async execute(request: SendMessageUseCaseRequest) {
-    const { User_user_uuid, phone, text } = request;
+    const { User_user_uuid, message_to, message_text } = request;
+
     const client: any = await this.clientRepository.getClient(User_user_uuid);
 
     if (!client) {
@@ -49,7 +48,10 @@ export class SendMessageUseCase {
       throw new BadRequestException('plan not exists');
     }
 
-    await this.notificationRepository.sendWhatsMessage(phone, text);
+    await this.notificationRepository.sendWhatsMessage(
+      message_to,
+      message_text,
+    );
     return await this.messageRepository.create(request);
   }
 }

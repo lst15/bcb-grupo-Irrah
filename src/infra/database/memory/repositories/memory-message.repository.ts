@@ -6,9 +6,9 @@ import { MessageRepository } from 'src/domain/repositories/message.repository';
 export class MemoryMessageRepository extends MessageRepository {
   private database: MessageModel[] = [
     {
-      is_whatsapp: true,
-      text: 'Bom dia',
+      message_text: 'Bom dia',
       User_user_uuid: '',
+      message_to: '+5514997856541',
     },
   ];
 

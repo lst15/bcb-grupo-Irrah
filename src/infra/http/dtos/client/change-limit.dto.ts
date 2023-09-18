@@ -1,7 +1,7 @@
-import { IsNumber, Min } from 'class-validator';
+import { IsNotEmpty, IsNumber, Min } from 'class-validator';
 
 export class ChangeLimitDto {
-  @IsNumber()
+  @IsNotEmpty()
   user_uuid: string;
   @IsNumber()
   @Min(0)

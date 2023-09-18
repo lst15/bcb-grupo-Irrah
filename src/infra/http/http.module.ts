@@ -9,10 +9,13 @@ import { ChangeplanController } from './controllers/client/change-plan.controlle
 import { ChangeLimitUseCase } from 'src/domain/usecases/client/change-limit.usecase';
 import { ChangeLimitController } from './controllers/client/change-limit.controller';
 import { ChangePlanUseCase } from 'src/domain/usecases/client/change-plain.usecase';
-import { SendMessageController } from './controllers/message/send-message.controller';
 import { PrismaModuleDatabase } from '../database/prisma/prisma.module';
 import { MockimplModule } from '../notification/mockimpl/Mockimpl.module';
 import { SendMessageUseCase } from 'src/domain/usecases/message/send-message.usecase';
+import { CreatePlatformController } from './controllers/platform/create-platform.repository';
+import { CreatePlatformUseCase } from 'src/domain/usecases/platform/create-platform.usecase';
+import { SendMessageHasPlatformControler } from './controllers/message-has-platform/send-message-has-platform.controller';
+import { SendMessageHasPlatformUseCase } from 'src/domain/usecases/message-has-platform/send-message-has-platform.repository';
 
 @Module({
   imports: [PrismaModuleDatabase, MockimplModule],
@@ -22,7 +25,8 @@ import { SendMessageUseCase } from 'src/domain/usecases/message/send-message.use
     GetClientController,
     ChangeplanController,
     ChangeLimitController,
-    SendMessageController,
+    CreatePlatformController,
+    SendMessageHasPlatformControler,
   ],
   providers: [
     CreateUserUseCase,
@@ -31,6 +35,8 @@ import { SendMessageUseCase } from 'src/domain/usecases/message/send-message.use
     ChangePlanUseCase,
     ChangeLimitUseCase,
     SendMessageUseCase,
+    CreatePlatformUseCase,
+    SendMessageHasPlatformUseCase,
   ],
 })
 export class HttpModule {}

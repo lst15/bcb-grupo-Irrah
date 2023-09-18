@@ -1,4 +1,5 @@
 export interface UserModel {
+  user_uuid?: string;
   user_cpf: string;
   user_name: string;
   user_email: string;

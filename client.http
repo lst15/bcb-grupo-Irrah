@@ -6,25 +6,12 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "user_cpf": "04157338221",
+  "user_cpf": "04157548121",
   "user_name": "Juvenal",
-  "user_email": "Jav31algarci1a@gmail.com",
-  "user_phone": "+5513936271364",
+  "user_email": "Jav3541a1lgarci1a@gmail.com",
+  "user_phone": "+5513914271364",
   "user_company_name": "Supermercado",
-  "user_company_cnpj": "513131442/0000"
-}
-
-###
-
-# @name send_message
-POST {{baseUrl}}/message/send
-Content-Type: application/json
-
-{
-    "user_id":2,
-    "text":"Compre meu curso",
-    "is_whatsapp":true,
-    "phone":"14996278264"
+  "user_company_cnpj": "514131442/0000"
 }
 
 ###
@@ -34,14 +21,14 @@ PUT {{baseUrl}}/clients/add_credits
 Content-Type: application/json
 
 {
-  "user_id":2,
-  "credits":0.5
+  "user_uuid": "362b1e55-ea8b-4c66-9f17-f240545264ef",
+  "credits":3
 }
 
 ###
 
 # @name get_client
-GET {{baseUrl}}/clients/2
+GET {{baseUrl}}/clients/362b1e55-ea8b-4c66-9f17-f240545264ef
 Content-Type: application/json
 
 ###
@@ -51,8 +38,8 @@ PUT {{baseUrl}}/clients/plan
 Content-Type: application/json
 
 {
-  "user_id":2,
-  "plan_type":"pos-pago"
+  "user_uuid": "362b1e55-ea8b-4c66-9f17-f240545264ef",
+  "plan_type":"pre-pago"
 }
 
 ###
@@ -62,7 +49,31 @@ PUT {{baseUrl}}/clients/limit
 Content-Type: application/json
 
 {
-  "user_id":2,
+  "user_uuid": "362b1e55-ea8b-4c66-9f17-f240545264ef",
   "limit":3
+}
+
+###
+
+# @name change_limit
+POST {{baseUrl}}/platforms
+Content-Type: application/json
+
+{
+  "platform_name":"Messenger",
+  "platform_cost":1
+}
+
+###
+
+# @name change_limit
+POST {{baseUrl}}/messages/send
+Content-Type: application/json
+
+{
+  "message_text":"WhatsApp",
+  "message_to":"40028922",
+  "user_uuid": "362b1e55-ea8b-4c66-9f17-f240545264ef",
+  "platform_id": 1
 }
 

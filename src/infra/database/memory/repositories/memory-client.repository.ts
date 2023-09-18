@@ -6,21 +6,21 @@ import { ClientRepository } from 'src/domain/repositories/client.repository';
 export class MemoryClientRepository extends ClientRepository {
   private database: ClientModel[] = [
     {
-      User_user_uuid: 'abcde-1234',
+      User_user_uuid: 'd0fa50b5-d4ec-4f36-9dae-29d4f964100f',
       plan_type: 'pre-pago',
       allow_consume: 0,
       credits: 0.25,
       current_consume: 0,
     },
     {
-      User_user_uuid: 'fghi-5678',
+      User_user_uuid: 'e5e79e4c-1280-49eb-bec2-6f2cf05f7a36',
       plan_type: 'pre-pago',
       allow_consume: 0,
       credits: 0,
       current_consume: 0,
     },
     {
-      User_user_uuid: 'jklm-9012',
+      User_user_uuid: 'b1c3af5f-7273-4a4a-b6d0-be9c210ac887',
       plan_type: 'pos-pago',
       allow_consume: 0.25,
       credits: 0,
@@ -34,7 +34,7 @@ export class MemoryClientRepository extends ClientRepository {
       current_consume: 0,
     },
     {
-      User_user_uuid: 'pqrs-7890',
+      User_user_uuid: 'b1c3af5f-7273-4a4a-b6d0-be9c210ac887',
       plan_type: 'pago',
       allow_consume: 0,
       credits: 4,

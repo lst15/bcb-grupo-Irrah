@@ -19,7 +19,7 @@ describe('Create User', () => {
 
   it('It should be able to change client plan', async () => {
     const body = {
-      user_id: 0,
+      user_uuid: 'b1c3af5f-7273-4a4a-b6d0-be9c210ac887',
       plan_type: 'pre-pago',
     };
 
@@ -28,7 +28,7 @@ describe('Create User', () => {
 
   it('It should not be able to change client plan because user not exists', async () => {
     const body = {
-      user_id: 100,
+      user_uuid: '14905ac7-6ca4-4512-8e3f-cb599e11aa45',
       plan_type: 'pre-pago',
     };
 

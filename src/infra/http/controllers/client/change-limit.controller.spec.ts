@@ -19,7 +19,7 @@ describe('Create User', () => {
 
   it('It should be able to change client limit', async () => {
     const body = {
-      user_id: 0,
+      user_uuid: 'd0fa50b5-d4ec-4f36-9dae-29d4f964100f',
       limit: 10,
     };
 
@@ -28,7 +28,7 @@ describe('Create User', () => {
 
   it('It should not be able to change client limit because user not exists', async () => {
     const body = {
-      user_id: 100,
+      user_uuid: '14905ac7-6ca4-4512-8e3f-cb599e11aa45',
       limit: 10,
     };
 

@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Client {
-  client_id       Int    @id @default(autoincrement())
+  client_id       Int    @id @unique @default(autoincrement())
   User_user_uuid  String @unique
   plan_type       String
   credits         Float
@@ -25,13 +25,16 @@ model Client {
 }
 
 model Message {
-  message_id     Int     @id @default(autoincrement())
+  message_id     Int       @id @unique @default(autoincrement())
+  message_text   String
+  message_to     String
   User_user_uuid String
-  text           String
-  is_whatsapp    Boolean
-  User           User    @relation(fields: [User_user_uuid], references: [user_uuid])
+  message_sentAt DateTime? @default(now())
 
-  @@map("message")
+  User                 User                   @relation(fields: [User_user_uuid], references: [user_uuid])
+  Message_Has_Platform Message_Has_Platform[]
+
+  @@map("Message")
 }
 
 model User {
@@ -48,4 +51,26 @@ model User {
   client_relationship  Client[]
 
   @@map(name: "user")
+}
+
+model Platform {
+  platform_id        Int       @id @unique @default(autoincrement())
+  platform_name      String    @unique
+  platform_cost      Float
+  platform_createdAt DateTime? @default(now())
+
+  message_has_platform_relashionship Message_Has_Platform[]
+
+  @@map("platform")
+}
+
+model Message_Has_Platform {
+  message_has_platform_id Int @id @unique @default(autoincrement())
+  Platform_platform_id    Int
+  Message_message_id      Int
+
+  Platform Platform @relation(fields: [Platform_platform_id], references: [platform_id])
+  Message  Message  @relation(fields: [Message_message_id], references: [message_id])
+
+  @@map(name: "message_has_platform")
 }
