@@ -16,6 +16,8 @@ import { CreatePlatformController } from './controllers/platform/create-platform
 import { CreatePlatformUseCase } from 'src/domain/usecases/platform/create-platform.usecase';
 import { SendMessageHasPlatformControler } from './controllers/message-has-platform/send-message-has-platform.controller';
 import { SendMessageHasPlatformUseCase } from 'src/domain/usecases/message-has-platform/send-message-has-platform.repository';
+import { CreatePlanController } from './controllers/plan/create-plan.controller';
+import { CreatePlanUseCase } from 'src/domain/usecases/plan/create-plan.usecase';
 
 @Module({
   imports: [PrismaModuleDatabase, MockimplModule],
@@ -27,6 +29,7 @@ import { SendMessageHasPlatformUseCase } from 'src/domain/usecases/message-has-p
     ChangeLimitController,
     CreatePlatformController,
     SendMessageHasPlatformControler,
+    CreatePlanController,
   ],
   providers: [
     CreateUserUseCase,
@@ -37,6 +40,7 @@ import { SendMessageHasPlatformUseCase } from 'src/domain/usecases/message-has-p
     SendMessageUseCase,
     CreatePlatformUseCase,
     SendMessageHasPlatformUseCase,
+    CreatePlanUseCase,
   ],
 })
 export class HttpModule {}

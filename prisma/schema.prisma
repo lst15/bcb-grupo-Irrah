@@ -11,6 +11,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Plan {
+  plan_id   Int    @id @unique @default(autoincrement())
+  plan_name String @unique
+
+  @@map("plan")
+}
+
 model Client {
   client_id       Int    @id @unique @default(autoincrement())
   User_user_uuid  String @unique

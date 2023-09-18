@@ -10,6 +10,8 @@ import { PlatformRepository } from 'src/domain/repositories/platform.repository'
 import { PrismaPlatformRepository } from './repositories/prisma-platform.repository';
 import { MessageHasPatformRepository } from 'src/domain/repositories/message-has-platform.repository';
 import { PrismaMessageHasPlatformRepository } from './repositories/prisma-message-has-platform.repository';
+import { PlanRepository } from 'src/domain/repositories/plan.repository';
+import { PrismaPlanRepository } from './repositories/prisma-plan.repository';
 
 @Module({
   providers: [
@@ -34,6 +36,10 @@ import { PrismaMessageHasPlatformRepository } from './repositories/prisma-messag
       provide: MessageHasPatformRepository,
       useClass: PrismaMessageHasPlatformRepository,
     },
+    {
+      provide: PlanRepository,
+      useClass: PrismaPlanRepository,
+    },
   ],
   exports: [
     PlatformRepository,
@@ -41,6 +47,7 @@ import { PrismaMessageHasPlatformRepository } from './repositories/prisma-messag
     ClientRepository,
     MessageRepository,
     MessageHasPatformRepository,
+    PlanRepository,
   ],
 })
 export class PrismaModuleDatabase {}
