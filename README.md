@@ -46,9 +46,9 @@ Clone o projeto e acesse o diretorio
 
 ## Instruções para Instalação e Execução com Docker
 
-1. Basta inicializar os containeres
+1. Inicialize os containeres
 
    ```
-   docker-compose up -d postgres
-   docker-compose up -d web   
+   docker-compose up -d
+   docker-compose exec web npx prisma migrate dev
    ```
