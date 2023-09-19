@@ -15,18 +15,21 @@ model Plan {
   plan_id   Int    @id @unique @default(autoincrement())
   plan_name String @unique
 
+  Client Client[]
+
   @@map("plan")
 }
 
 model Client {
-  client_id       Int    @id @unique @default(autoincrement())
-  User_user_uuid  String @unique
-  plan_type       String
-  credits         Float
-  current_consume Float
-  allow_consume   Float
+  client_id              Int    @id @unique @default(autoincrement())
+  User_user_uuid         String @unique
+  Plan_plan_id           Int
+  client_credits         Float
+  client_current_consume Float
+  client_allow_consume   Float
 
-  User User @relation(fields: [User_user_uuid], references: [user_uuid])
+  user_relationship User @relation(fields: [User_user_uuid], references: [user_uuid])
+  plan_relationship Plan @relation(fields: [Plan_plan_id], references: [plan_id])
 
   @@map("client")
 }

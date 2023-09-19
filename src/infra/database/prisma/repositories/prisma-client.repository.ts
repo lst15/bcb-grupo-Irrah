@@ -2,19 +2,24 @@ import { Injectable } from '@nestjs/common';
 import { ClientModel } from 'src/domain/models/client.model';
 import { ClientRepository } from 'src/domain/repositories/client.repository';
 import { PrismaService } from '../PrismaService';
-import { Client } from '@prisma/client';
+import { PlanModel } from 'src/domain/models/plan.model';
 
 @Injectable()
 export class PrismaClientRepository implements ClientRepository {
   constructor(private prisma: PrismaService) {}
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  create(entity: ClientModel): object | Promise<ClientModel> {
+    throw new Error('Method not implemented.');
+  }
+
   async changeCurrentConsume(
     user_uuid: string,
-    consume: number,
+    client_consume: number,
   ): Promise<void> {
     await this.prisma.client.updateMany({
       data: {
-        current_consume: consume,
+        client_current_consume: client_consume,
       },
       where: {
         User_user_uuid: user_uuid,
@@ -25,7 +30,7 @@ export class PrismaClientRepository implements ClientRepository {
   async changeLimit(user_uuid: string, limit: number): Promise<void> {
     await this.prisma.client.updateMany({
       data: {
-        allow_consume: limit,
+        client_allow_consume: limit,
       },
       where: {
         User_user_uuid: user_uuid,
@@ -33,10 +38,10 @@ export class PrismaClientRepository implements ClientRepository {
     });
   }
 
-  async changePlan(user_uuid: string, plan: string): Promise<void> {
+  async changePlan(user_uuid: string, plan_id: number): Promise<void> {
     await this.prisma.client.updateMany({
       data: {
-        plan_type: plan,
+        Plan_plan_id: plan_id,
       },
       where: {
         User_user_uuid: user_uuid,
@@ -44,10 +49,13 @@ export class PrismaClientRepository implements ClientRepository {
     });
   }
 
-  async changeCredits(user_uuid: string, credits: number): Promise<void> {
+  async changeCredits(
+    user_uuid: string,
+    client_credits: number,
+  ): Promise<void> {
     await this.prisma.client.updateMany({
       data: {
-        credits: credits,
+        client_credits: client_credits,
       },
       where: {
         User_user_uuid: user_uuid,
@@ -55,19 +63,16 @@ export class PrismaClientRepository implements ClientRepository {
     });
   }
 
-  async getClient(user_uuid: string): Promise<Client> | null {
+  async getClient(
+    user_uuid: string,
+  ): null | Promise<ClientModel & { plan_relationship: PlanModel }> {
     return await this.prisma.client.findFirst({
       where: {
-        User: {
+        user_relationship: {
           user_uuid: user_uuid,
         },
       },
-    });
-  }
-
-  async create(entity: ClientModel): Promise<ClientModel> {
-    return await this.prisma.client.create({
-      data: { ...entity },
+      include: { plan_relationship: true },
     });
   }
 }

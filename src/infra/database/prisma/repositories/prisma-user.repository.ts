@@ -43,10 +43,10 @@ export class PrismaUserRepository implements UserRepository {
         user_phone: entity.user_phone,
         client_relationship: {
           create: {
-            allow_consume: 0,
-            current_consume: 0,
-            credits: 0,
-            plan_type: 'pre-pago',
+            client_allow_consume: 0,
+            client_current_consume: 0,
+            client_credits: 0,
+            Plan_plan_id: entity.Plan_plan_id,
           },
         },
       },

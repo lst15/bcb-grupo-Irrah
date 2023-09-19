@@ -1,4 +1,5 @@
 import { ClientModel } from '../models/client.model';
+import { PlanModel } from '../models/plan.model';
 import { BaseRepository } from './base.repository';
 import { Injectable } from '@nestjs/common';
 @Injectable()
@@ -9,15 +10,17 @@ export abstract class ClientRepository extends BaseRepository<ClientModel> {
   ): Promise<void> | object;
   abstract changePlan(
     user_uuid: string,
-    plan_type: string,
+    plan_id: number,
   ): Promise<void> | object;
-  abstract getClient(user_uuid: string): Promise<ClientModel | null> | object;
+  abstract getClient(
+    user_uuid: string,
+  ): null | Promise<ClientModel & { plan_relationship: PlanModel }>;
   abstract changeCredits(
     user_uuid: string,
-    credits: number,
+    client_credits: number,
   ): Promise<void> | object;
   abstract changeCurrentConsume(
     user_uuid: string,
-    consume: number,
+    client_consume: number,
   ): Promise<void> | object;
 }

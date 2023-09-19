@@ -10,8 +10,10 @@ export class CreateUserController {
 
   @Post()
   async handle(@Body() user: CreateUserDto) {
-    const executed: object | UserModel =
-      await this.createUserUseCase.execute(user);
+    const executed: object | UserModel = await this.createUserUseCase.execute({
+      ...user,
+      Plan_plan_id: user.plan_id,
+    });
 
     return {
       success: true,

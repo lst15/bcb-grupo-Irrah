@@ -1,6 +1,7 @@
 import {
   IsEmail,
   IsNotEmpty,
+  IsNumber,
   IsPhoneNumber,
   MaxLength,
   MinLength,
@@ -30,4 +31,7 @@ export class CreateUserDto {
   @MinLength(14)
   @MaxLength(14)
   user_company_cnpj: string;
+
+  @IsNumber()
+  plan_id: number;
 }

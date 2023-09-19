@@ -11,7 +11,6 @@ import { ChangeLimitController } from './controllers/client/change-limit.control
 import { ChangePlanUseCase } from 'src/domain/usecases/client/change-plain.usecase';
 import { PrismaModuleDatabase } from '../database/prisma/prisma.module';
 import { MockimplModule } from '../notification/mockimpl/Mockimpl.module';
-import { SendMessageUseCase } from 'src/domain/usecases/message/send-message.usecase';
 import { CreatePlatformController } from './controllers/platform/create-platform.repository';
 import { CreatePlatformUseCase } from 'src/domain/usecases/platform/create-platform.usecase';
 import { SendMessageHasPlatformControler } from './controllers/message-has-platform/send-message-has-platform.controller';
@@ -37,7 +36,6 @@ import { CreatePlanUseCase } from 'src/domain/usecases/plan/create-plan.usecase'
     GetClientUseCase,
     ChangePlanUseCase,
     ChangeLimitUseCase,
-    SendMessageUseCase,
     CreatePlatformUseCase,
     SendMessageHasPlatformUseCase,
     CreatePlanUseCase,

@@ -11,7 +11,8 @@ Content-Type: application/json
   "user_email": "Jav3541a1lgarci1a@gmail.com",
   "user_phone": "+5513914271364",
   "user_company_name": "Supermercado",
-  "user_company_cnpj": "514131442/0000"
+  "user_company_cnpj": "514131442/0000",
+  "plan_id": "8"
 }
 
 ###
@@ -28,7 +29,7 @@ Content-Type: application/json
 ###
 
 # @name get_client
-GET {{baseUrl}}/clients/362b1e55-ea8b-4c66-9f17-f240545264ef
+GET {{baseUrl}}/clients/9230e1b3-ee2e-48df-97cd-719a9ec36818
 Content-Type: application/json
 
 ###
@@ -76,4 +77,15 @@ Content-Type: application/json
   "user_uuid": "362b1e55-ea8b-4c66-9f17-f240545264ef",
   "platform_id": 1
 }
+
+###
+
+# @name create_plan
+POST {{baseUrl}}/plans
+Content-Type: application/json
+
+{
+  "plan_name":"Pos-pago"
+}
+
 

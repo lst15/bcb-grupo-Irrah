@@ -4,5 +4,5 @@ export class ChangePlanDto {
   @IsNotEmpty()
   user_uuid: string;
   @IsNotEmpty()
-  plan_type: string;
+  plan_type: number;
 }

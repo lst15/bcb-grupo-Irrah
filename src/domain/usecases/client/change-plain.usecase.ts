@@ -3,7 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 
 interface ChangePlanUseCaseRequest {
   user_uuid: string;
-  plan_type: string;
+  plan_type: number;
 }
 
 @Injectable()

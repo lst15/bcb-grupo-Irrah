@@ -1,5 +1,5 @@
 import { UserModel } from 'src/domain/models/user.model';
-import { Injectable } from '@nestjs/common';
+import { ConflictException, HttpStatus, Injectable } from '@nestjs/common';
 import { PlanModel } from 'src/domain/models/plan.model';
 import { PlanRepository } from 'src/domain/repositories/plan.repository';
 
@@ -12,6 +12,15 @@ export class CreatePlanUseCase {
   async execute(
     request: CreatePlanUseCaseRequest,
   ): Promise<object | UserModel> {
+    const plan = await this.planRepository.findPlan(0, request.plan_name);
+
+    if (plan) {
+      throw new ConflictException({
+        status: HttpStatus.CONFLICT,
+        error: 'plan already exists.',
+      });
+    }
+
     return await this.planRepository.create({
       plan_name: request.plan_name,
     });

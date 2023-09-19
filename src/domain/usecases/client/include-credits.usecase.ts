@@ -25,7 +25,7 @@ export class IncludeCreditsUseCase {
 
     return await this.clientRepository.changeCredits(
       User_user_uuid,
-      client.credits + credits,
+      client.client_credits + credits,
     );
   }
 }

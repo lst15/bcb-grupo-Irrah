@@ -6,4 +6,5 @@ export interface UserModel {
   user_phone: string;
   user_company_name: string;
   user_company_cnpj: string;
+  Plan_plan_id?: number;
 }
