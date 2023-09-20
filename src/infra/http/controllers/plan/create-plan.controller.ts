@@ -8,7 +8,6 @@ export class CreatePlanController {
 
   @Post()
   async handle(@Body() plan: CreatePlanDto) {
-    console.log(plan);
     const executed = await this.createPlanUseCase.execute(plan);
     return {
       success: true,
