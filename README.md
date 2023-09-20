@@ -32,13 +32,19 @@ Clone o projeto e acesse o diretorio
    ```
 
 2. Faça uma copia do arquivo env-example e renomeie a copia para .env, em seguida configure o DATABASE_URL de acordo com o banco a ser utilizado
-3. Faça o build do projeto
+3. Execute as migrações do banco
+   
+   ```
+   npx prisma migrate dev
+   ```
+
+5. Faça o build do projeto
 
    ```
    npm run build
    ```
 
-4. Inicialize o projeto
+6. Inicialize o projeto
 
     ```
     npm run start
